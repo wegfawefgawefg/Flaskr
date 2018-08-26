@@ -38,4 +38,10 @@ def create_app(test_config=None):
         sumArgs = sum( intArgs )
         return str( sumArgs )
 
+    from . import db
+    db.init_app(app)
+
+    from . import auth
+    app.register_blueprint(auth.bp)
+
     return app
